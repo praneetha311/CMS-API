@@ -15,7 +15,7 @@ The application provides REST APIs to perform **CRUD operations** on customer da
 ## Project Structure
 ```
 
-customer-cms-api/
+cms-api/
 ├── app.py
 ├── requirements.txt
 ├── README.md
@@ -26,7 +26,7 @@ customer-cms-api/
 │   ├── style.css
 │   └── script.js
 └── postman/
-└── customer_cms_postman_collection.json
+└── cms_postman_collection.json
 
 ````
 
