@@ -1,12 +1,13 @@
-# Customer Management System (CMS) – REST API
+# Customer Management System (CMS) – REST API + Web UI
 
 ## Description
 A simple **Customer Management System (CMS)** built using **Python Flask**.  
-The application exposes REST APIs to perform **CRUD operations** on customer data and uses **Postman** for API testing.
+The application provides REST APIs to perform **CRUD operations** on customer data and includes a **web-based UI** built using HTML, CSS, and JavaScript.
 
 ## Technologies
 - Python 3  
 - Flask  
+- HTML, CSS, JavaScript  
 - Postman  
 - Git  
 - JSON  
@@ -19,14 +20,18 @@ customer-cms-api/
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
+├── templates/
+│   └── index.html
+├── static/
+│   ├── style.css
+│   └── script.js
 └── postman/
 └── customer_cms_postman_collection.json
 
 ````
 
-## Setup & Run
+## Run
 ```bash
-pip install -r requirements.txt
 python app.py
 ````
 
@@ -58,17 +63,39 @@ http://127.0.0.1:5000
 }
 ```
 
+## Web UI
+
+A clean, responsive UI allows:
+
+* Adding customers
+* Viewing all customers
+* Editing customer details
+* Deleting records
+
+Built using:
+
+* `templates/index.html`
+* `static/style.css`
+* `static/script.js`
+
+Access it at:
+
+```
+http://127.0.0.1:5000
+```
+
 ## Postman
 
 Import the collection from:
 
 ```
-postman/customer_cms_postman_collection.json
+postman/cms_postman_collection.json
 ```
 
 ## Notes
 
 * Uses in-memory storage
-* Data resets on server restart
-* Can be extended with database and authentication
+* Data resets on restart
+* Can be extended with database + authentication
+
 
