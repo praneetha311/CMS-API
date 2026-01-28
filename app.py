@@ -2,51 +2,51 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# CMS content store
-contents = []
+# In-memory customer database
+customers = []
 
-# CREATE content
-@app.route('/contents', methods=['POST'])
-def create_content():
-    content = request.json
-    contents.append(content)
+# CREATE customer
+@app.route('/customers', methods=['POST'])
+def create_customer():
+    customer = request.json
+    customers.append(customer)
     return jsonify({
-        "message": "Content created successfully",
-        "content": content
+        "message": "Customer added successfully",
+        "customer": customer
     }), 201
 
-# READ all contents
-@app.route('/contents', methods=['GET'])
-def get_all_contents():
-    return jsonify(contents), 200
+# READ all customers
+@app.route('/customers', methods=['GET'])
+def get_customers():
+    return jsonify(customers), 200
 
-# READ content by ID
-@app.route('/contents/<int:content_id>', methods=['GET'])
-def get_content(content_id):
-    for content in contents:
-        if content["id"] == content_id:
-            return jsonify(content), 200
-    return jsonify({"error": "Content not found"}), 404
+# READ customer by ID
+@app.route('/customers/<int:customer_id>', methods=['GET'])
+def get_customer(customer_id):
+    for customer in customers:
+        if customer["id"] == customer_id:
+            return jsonify(customer), 200
+    return jsonify({"error": "Customer not found"}), 404
 
-# UPDATE content
-@app.route('/contents/<int:content_id>', methods=['PUT'])
-def update_content(content_id):
+# UPDATE customer
+@app.route('/customers/<int:customer_id>', methods=['PUT'])
+def update_customer(customer_id):
     updated_data = request.json
-    for content in contents:
-        if content["id"] == content_id:
-            content.update(updated_data)
+    for customer in customers:
+        if customer["id"] == customer_id:
+            customer.update(updated_data)
             return jsonify({
-                "message": "Content updated successfully",
-                "content": content
+                "message": "Customer updated successfully",
+                "customer": customer
             }), 200
-    return jsonify({"error": "Content not found"}), 404
+    return jsonify({"error": "Customer not found"}), 404
 
-# DELETE content
-@app.route('/contents/<int:content_id>', methods=['DELETE'])
-def delete_content(content_id):
-    global contents
-    contents = [c for c in contents if c["id"] != content_id]
-    return jsonify({"message": "Content deleted successfully"}), 200
+# DELETE customer
+@app.route('/customers/<int:customer_id>', methods=['DELETE'])
+def delete_customer(customer_id):
+    global customers
+    customers = [c for c in customers if c["id"] != customer_id]
+    return jsonify({"message": "Customer deleted successfully"}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)

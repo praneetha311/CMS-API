@@ -1,42 +1,74 @@
-# Content Management System (CMS) API
+# Customer Management System (CMS) – REST API
 
 ## Description
-This project implements a simple Content Management System using a RESTful API
-developed in Python with Flask. Postman is used to test and validate all CRUD
-operations.
+A simple **Customer Management System (CMS)** built using **Python Flask**.  
+The application exposes REST APIs to perform **CRUD operations** on customer data and uses **Postman** for API testing.
 
-## Features
-- Create content
-- View all content
-- View content by ID
-- Update content
-- Delete content
-
-## Technologies Used
-- Python
-- Flask
-- Postman
-- Git
+## Technologies
+- Python 3  
+- Flask  
+- Postman  
+- Git  
+- JSON  
 
 ## Project Structure
-cms-api/
+```
+
+customer-cms-api/
 ├── app.py
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
 └── postman/
-    └── cms_postman_collection.json
+└── customer_cms_postman_collection.json
 
-## How to Run
-1. Install dependencies  
-   `pip install -r requirements.txt`
-2. Run the application  
-   `python app.py`
-3. Open Postman and test the APIs
+````
+
+## Setup & Run
+```bash
+pip install -r requirements.txt
+python app.py
+````
+
+Server URL:
+
+```
+http://127.0.0.1:5000
+```
 
 ## API Endpoints
-POST    /contents  
-GET     /contents  
-GET     /contents/{id}  
-PUT     /contents/{id}  
-DELETE  /contents/{id}
+
+| Method | Endpoint        | Description        |
+| ------ | --------------- | ------------------ |
+| POST   | /customers      | Add customer       |
+| GET    | /customers      | Get all customers  |
+| GET    | /customers/{id} | Get customer by ID |
+| PUT    | /customers/{id} | Update customer    |
+| DELETE | /customers/{id} | Delete customer    |
+
+## Sample Request (POST)
+
+```json
+{
+  "id": 101,
+  "name": "Rahul Sharma",
+  "email": "rahul@gmail.com",
+  "phone": "9876543210",
+  "city": "Hyderabad"
+}
+```
+
+## Postman
+
+Import the collection from:
+
+```
+postman/customer_cms_postman_collection.json
+```
+
+## Notes
+
+* Uses in-memory storage
+* Data resets on server restart
+* Can be extended with database and authentication
+
