@@ -1,0 +1,95 @@
+{
+  "info": {
+    "_postman_id": "9b1c4d3a-1e2f-4a9b-8c6a-abcdef123456",
+    "name": "CMS REST API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for testing CMS CRUD APIs built using Python Flask"
+  },
+  "item": [
+    {
+      "name": "Create Content (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": 1,\n  \"title\": \"Introduction to CMS\",\n  \"author\": \"Admin\",\n  \"content\": \"This article explains CMS basics.\",\n  \"status\": \"Published\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/contents",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["contents"]
+        }
+      }
+    },
+    {
+      "name": "Get All Contents (GET)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:5000/contents",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["contents"]
+        }
+      }
+    },
+    {
+      "name": "Get Content by ID (GET)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:5000/contents/1",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["contents", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Content (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Draft\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/contents/1",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["contents", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Content (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://127.0.0.1:5000/contents/1",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "5000",
+          "path": ["contents", "1"]
+        }
+      }
+    }
+  ]
+}
