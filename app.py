@@ -1,52 +1,58 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
-# In-memory customer database
 customers = []
 
-# CREATE customer
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+# CREATE
 @app.route('/customers', methods=['POST'])
 def create_customer():
-    customer = request.json
-    customers.append(customer)
-    return jsonify({
-        "message": "Customer added successfully",
-        "customer": customer
-    }), 201
+    data = request.json
+    customers.append({
+        "id": data["id"],
+        "name": data["name"],
+        "email": data["email"],
+        "phone": data["phone"],
+        "city": data["city"]
+    })
+    return jsonify({"message": "Customer created"}), 201
 
-# READ all customers
+# READ ALL
 @app.route('/customers', methods=['GET'])
 def get_customers():
-    return jsonify(customers), 200
+    return jsonify(customers)
 
-# READ customer by ID
+# READ BY ID
 @app.route('/customers/<int:customer_id>', methods=['GET'])
 def get_customer(customer_id):
-    for customer in customers:
-        if customer["id"] == customer_id:
-            return jsonify(customer), 200
+    for c in customers:
+        if c["id"] == customer_id:
+            return jsonify(c)
     return jsonify({"error": "Customer not found"}), 404
 
-# UPDATE customer
+# UPDATE
 @app.route('/customers/<int:customer_id>', methods=['PUT'])
 def update_customer(customer_id):
-    updated_data = request.json
-    for customer in customers:
-        if customer["id"] == customer_id:
-            customer.update(updated_data)
-            return jsonify({
-                "message": "Customer updated successfully",
-                "customer": customer
-            }), 200
+    data = request.json
+    for c in customers:
+        if c["id"] == customer_id:
+            c["name"] = data["name"]
+            c["email"] = data["email"]
+            c["phone"] = data["phone"]
+            c["city"] = data["city"]
+            return jsonify({"message": "Customer updated"})
     return jsonify({"error": "Customer not found"}), 404
 
-# DELETE customer
+# DELETE
 @app.route('/customers/<int:customer_id>', methods=['DELETE'])
 def delete_customer(customer_id):
     global customers
     customers = [c for c in customers if c["id"] != customer_id]
-    return jsonify({"message": "Customer deleted successfully"}), 200
+    return jsonify({"message": "Customer deleted"})
 
 if __name__ == "__main__":
     app.run(debug=True)

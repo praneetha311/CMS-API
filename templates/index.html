@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Management System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">Customer Management System</div>
+</header>
+
+<main class="container">
+
+    <!-- FORM SECTION -->
+    <section class="card">
+        <h3>Add Customer</h3>
+
+        <div class="form-grid">
+            <input id="id" type="number" placeholder="Customer ID">
+            <input id="name" placeholder="Full Name">
+            <input id="email" type="email" placeholder="Email">
+            <input id="phone" placeholder="Phone">
+            <input id="city" placeholder="City">
+        </div>
+
+        <div class="form-actions">
+            <button id="saveBtn" onclick="saveCustomer()">Add Customer</button>
+            <button class="secondary" onclick="resetForm()">Clear</button>
+        </div>
+    </section>
+
+    <!-- TABLE SECTION -->
+    <section class="card">
+        <h3>Customer Records</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="customerTable"></tbody>
+        </table>
+    </section>
+
+</main>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
