@@ -1,4 +1,4 @@
-# Customer Management System (CMS) – REST API + Web UI
+# Customer Management System (CMS) 
 
 ## Description
 A simple **Customer Management System (CMS)** built using **Python Flask**.  
